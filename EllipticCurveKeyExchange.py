@@ -85,6 +85,8 @@ def ECDH_Main():
     print("Bob Obtains K:   ", K_B)
     if K_A != K_B:
         print("Key Exchange Failed")
+    else:
+        print("Key Exchange Success")
 
 if __name__ == "__main__":
     ECDH_Main()
