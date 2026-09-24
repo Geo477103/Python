@@ -1,6 +1,6 @@
 # Use 'textbook RSA' to encrypt message, this method is insecure to certain attacks 
 
-from Prime_Test import Fermat_test 
+from Prime_Test import fermatTest 
 import random as rd
 import math
 import sympy
@@ -43,7 +43,7 @@ def hcf(a, b):
 
 def Generate_prime(bits, fermat_tests = 1000):
     num = rd.randint(1 << (bits - 1), (2 << (bits - 1)) - 1) # [2, 3]    
-    while not Fermat_test(num, fermat_tests):
+    while not fermatTest(num, fermat_tests):
         num = rd.randint(1 << (bits - 1), (2 << (bits - 1)) - 1)
     return num
 
@@ -83,7 +83,6 @@ def Bob_decrypt(cipher, d, n):
     return mes_decrypt
 
 def RSA_process(key_size, message, Show_Ciphertext = True, Show_Decryption = True):
-    #print("start")
     n, e, d = Bob(key_size)
     ciphertext = Alice(message, e, n)
     if Show_Ciphertext:
@@ -94,10 +93,6 @@ def RSA_process(key_size, message, Show_Ciphertext = True, Show_Decryption = Tru
     return
 
 if __name__ == "__main__":
-    key_size = 16
-    mes = rd.randint(0, 1 << key_size)
-    print("Mes:", mes)
-    n, e, _ = Bob(32)
-    cipher = Alice(mes, e, n) 
-    print("Cipher Text:", cipher) 
-    #RSA_process(128, 7327432965485)
+    keysize = 128
+    message = 7327432965485
+    RSA_process(keysize, message)
