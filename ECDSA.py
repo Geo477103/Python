@@ -95,7 +95,7 @@ def Verify(message, r, s):
 
 if __name__ == "__main__":
     r, s = Sign('Hello world', G, p, n)
-    print(Verify('Hello World', r, s))
+    print(Verify('Hello world', r, s))
 
 
 
